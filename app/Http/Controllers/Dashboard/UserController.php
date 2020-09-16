@@ -54,7 +54,7 @@ class UserController extends Controller
 
         }
 
-        return redirect('users.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -65,7 +65,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.users.edit');
+        $user = $this->userService->show($id);
+
+        if (!$user) {
+            return redirect()->route('users.index');
+        }
+
+        return view('pages.users.edit')->with(compact('user'));
     }
 
     /**
@@ -85,7 +91,7 @@ class UserController extends Controller
 
         }
 
-        return redirect('users.index');
+        return redirect()->route('users.index');
     }
 
     /**
@@ -104,6 +110,6 @@ class UserController extends Controller
 
         }
 
-        return redirect('users.index');
+        return redirect()->route('users.index');
     }
 }
