@@ -25,7 +25,7 @@ class UpdatePatientRequest extends FormRequest
     {
         return [
             'fullname'  => ['required', 'string', 'max:255'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:patients'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:patients,email,'.request('id')],
             'born_at'   => ['required'],
             'cellphone' => ['required'],
             'cpf'       => ['required'],

@@ -54,7 +54,7 @@ class DoctorController extends Controller
 
         }
 
-        return redirect('doctors.index');
+        return redirect()->route('doctors.index');
     }
 
     /**
@@ -65,7 +65,13 @@ class DoctorController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.doctors.edit');
+        $doctor = $this->doctorService->show($id);
+
+        if (!$doctor) {
+
+        }
+
+        return view('pages.doctors.edit')->with(compact('doctor'));
     }
 
     /**
@@ -85,7 +91,7 @@ class DoctorController extends Controller
 
         }
 
-        return redirect('doctors.index');
+        return redirect()->route('doctors.index');
     }
 
     /**
@@ -104,6 +110,6 @@ class DoctorController extends Controller
 
         }
 
-        return redirect('doctors.index');
+        return redirect()->route('doctors.index');
     }
 }

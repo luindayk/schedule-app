@@ -6,14 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\UpdateScheduleRequest;
 use App\Http\Requests\Dashboard\StoreScheduleRequest;
 use App\Services\ScheduleService;
+use App\Services\DoctorService;
+use App\Services\PatientService;
 
 class ScheduleController extends Controller
 {
-    protected $scheduleService;
+    protected $scheduleService, $doctorService, $patientService;
 
-    public function __construct(ScheduleService $scheduleService)
+    public function __construct(
+        ScheduleService $scheduleService,
+        PatientService $patientService,
+        DoctorService $doctorService
+    )
     {
         $this->scheduleService = $scheduleService;
+        $this->doctorService = $doctorService;
+        $this->patientService = $patientService;
     }
 
     /**
@@ -35,7 +43,13 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('pages.schedules.create');
+        $doctors = $this->doctorService->listAll();
+        $patients = $this->patientService->listAll();
+
+        return view('pages.schedules.create')->with(compact([
+            'doctors',
+            'patients',
+        ]));
     }
 
     /**
@@ -54,7 +68,7 @@ class ScheduleController extends Controller
 
         }
 
-        return redirect('schedules.index');
+        return redirect()->route('schedules.index');
     }
 
     /**
@@ -65,7 +79,20 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.schedules.edit');
+        $schedule = $this->scheduleService->show($id);
+
+        if (!$schedule) {
+            return redirect()->route('schedules.index');
+        }
+
+        $doctors = $this->doctorService->listAll();
+        $patients = $this->patientService->listAll();
+
+        return view('pages.schedules.edit')->with(compact([
+            'doctors',
+            'patients',
+            'schedule'
+        ]));
     }
 
     /**
@@ -85,7 +112,7 @@ class ScheduleController extends Controller
 
         }
 
-        return redirect('schedules.index');
+        return redirect()->route('schedules.index');
     }
 
     /**
@@ -104,6 +131,6 @@ class ScheduleController extends Controller
 
         }
 
-        return redirect('schedules.index');
+        return redirect()->route('schedules.index');
     }
 }

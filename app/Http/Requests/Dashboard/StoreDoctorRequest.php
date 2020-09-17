@@ -28,7 +28,7 @@ class StoreDoctorRequest extends FormRequest
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:doctors'],
             'specialty' => ['required', 'string'],
             'cellphone' => ['required'],
-            'crm'       => ['crm'],
+            'crm'       => ['required'],
         ];
     }
 }

@@ -11,6 +11,10 @@ class Schedule extends Model
     ];
 
     protected $dates = [
+        'schedule'
+    ];
+
+    protected $casts = [
         'schedule' => 'datetime:Y-m-d H:i:s'
     ];
 

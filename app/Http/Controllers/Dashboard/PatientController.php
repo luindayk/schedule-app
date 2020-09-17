@@ -54,7 +54,7 @@ class PatientController extends Controller
 
         }
 
-        return redirect('patients.index');
+        return redirect()->route('patients.index');
     }
 
     /**
@@ -65,7 +65,13 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        return view('pages.patients.edit');
+        $patient = $this->patientService->show($id);
+
+        if (!$patient) {
+            return redirect()->route('patients.index');
+        }
+
+        return view('pages.patients.edit')->with(compact('patient'));
     }
 
     /**
@@ -85,7 +91,7 @@ class PatientController extends Controller
 
         }
 
-        return redirect('patients.index');
+        return redirect()->route('patients.index');
     }
 
     /**
@@ -104,6 +110,6 @@ class PatientController extends Controller
 
         }
 
-        return redirect('patients.index');
+        return redirect()->route('patients.index');
     }
 }

@@ -10,6 +10,11 @@ class PatientService {
         return Patient::paginate(30);
     }
 
+    public function listAll()
+    {
+        return Patient::all();
+    }
+
     public function show($id)
     {
         $patient = Patient::find($id);
