@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::get('/', function () {
     return redirect('login');
