@@ -26,7 +26,7 @@ class UpdateScheduleRequest extends FormRequest
         return [
             'doctor_id'  => ['required'],
             'patient_id' => ['required'],
-            'schedule'   => ['required'],
+            'schedule'   => ['required', 'after:'.date('Y-m-d')],
         ];
     }
 }

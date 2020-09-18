@@ -56,7 +56,7 @@ class ScheduleService {
         $fields = [
             'doctor_id'  => request('doctor_id'),
             'patient_id' => request('patient_id'),
-            'schedule'   => request('schedule'),
+            'schedule'   => \Carbon\Carbon::parse(request('schedule')),
         ];
 
         return $fields;

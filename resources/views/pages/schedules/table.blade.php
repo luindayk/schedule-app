@@ -4,7 +4,7 @@
             <th class="text-center" scope="col">Paciente</th>
             <th class="text-center" scope="col">Médico</th>
             <th class="text-center" scope="col">Data Consulta</th>
-            <th class="text-center" scope="col">Agendamento em</th>
+            <th class="text-center" scope="col">Agendado em</th>
             <th class="text-center" scope="col">Ações</th>
         </tr>
     </thead>
@@ -13,7 +13,7 @@
             <tr>
                 <td class="text-center">{{ $schedule->patient->fullname }}</td>
                 <td class="text-center">{{ $schedule->doctor->fullname }}</td>
-                <td class="text-center">{{ $schedule->schedule->format('d/m/Y H:i:s') }}</td>
+                <td class="text-center">{{ $schedule->schedule->format('d/m/Y H:i') }}</td>
                 <td class="text-center">{{ $schedule->created_at->format('d/m/Y H:i:s') }}</td>
                 <td class="text-center">
                     <a href="{{ route('schedules.edit', $schedule->id) }}" class="btn btn-sm btn-primary">Editar</a>

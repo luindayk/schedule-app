@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'dashboard',  'middleware' => ['auth']], function () {
-    Route::resource('/users', 'Dashboard\UserController')->except(['show']);
-    Route::resource('/doctors', 'Dashboard\DoctorController')->except(['show']);
-    Route::resource('/patients', 'Dashboard\PatientController')->except(['show']);
-    Route::resource('/schedules', 'Dashboard\ScheduleController')->except(['show']);
+    Route::resource('users', 'Dashboard\UserController')->except(['show']);
+    Route::resource('doctors', 'Dashboard\DoctorController')->except(['show']);
+    Route::resource('patients', 'Dashboard\PatientController')->except(['show']);
+    Route::resource('schedules', 'Dashboard\ScheduleController')->except(['show']);
 });
 

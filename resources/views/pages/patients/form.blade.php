@@ -1,5 +1,5 @@
 <div class="form-group row">
-    <label for="fullname" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+    <label for="fullname" class="col-md-4 col-form-label text-md-right">Nome</label>
 
     <div class="col-md-6">
         <input id="fullname" type="text" class="form-control @error('fullname') is-invalid @enderror" name="fullname" value="{{ !empty($patient) ? $patient->fullname : old('fullname') }}" required autocomplete="fullname" autofocus>
@@ -13,7 +13,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+    <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
 
     <div class="col-md-6">
         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ !empty($patient) ? $patient->email : old('email') }}" required autocomplete="email">
@@ -27,7 +27,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="cellphone" class="col-md-4 col-form-label text-md-right">{{ __('Cellphone') }}</label>
+    <label for="cellphone" class="col-md-4 col-form-label text-md-right">Celular</label>
 
     <div class="col-md-6">
         <input id="cellphone" type="text" class="form-control @error('cellphone') is-invalid @enderror" name="cellphone" value="{{ !empty($patient) ? $patient->cellphone : old('cellphone') }}" required>
@@ -41,7 +41,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('CPF') }}</label>
+    <label for="cpf" class="col-md-4 col-form-label text-md-right">CPF</label>
 
     <div class="col-md-6">
         <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="{{ !empty($patient) ? $patient->cpf : old('cpf') }}" required autocomplete="cpf">
@@ -55,7 +55,7 @@
 </div>
 
 <div class="form-group row">
-    <label for="born_at" class="col-md-4 col-form-label text-md-right">{{ __('Born At') }}</label>
+    <label for="born_at" class="col-md-4 col-form-label text-md-right">Data de nascimento</label>
 
     <div class="col-md-6">
         <input id="born_at" type="date" class="form-control @error('born_at') is-invalid @enderror" name="born_at" value="{{ !empty($patient) ? $patient->born_at : old('born_at') }}" />
@@ -69,13 +69,13 @@
 </div>
 
 <div class="form-group row">
-    <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
+    <label for="sex" class="col-md-4 col-form-label text-md-right">Sexo</label>
     @php
         $sex = '';
-        if (!empty($patient)) {
-            $sex = $patient->sex;
-        } elseif (old('sex')) {
+        if (old('sex')) {
             $sex = old('sex');
+        } elseif (!empty($patient)) {
+            $sex = $patient->sex;
         }
     @endphp
     <div class="col-md-6">
@@ -89,7 +89,7 @@
 <div class="form-group row mb-0">
     <div class="col-md-6 offset-md-4">
         <button type="submit" class="btn btn-primary">
-            {{ __('Register') }}
+            {{ !empty($patient) ? 'Salvar' : 'Cadastrar' }}
         </button>
     </div>
 </div>

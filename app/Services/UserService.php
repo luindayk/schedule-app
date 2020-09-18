@@ -67,4 +67,22 @@ class UserService {
         return $fields;
     }
 
+    public function loginAttempt()
+    {
+        return auth()->attempt([
+            'email'    => request('email'),
+            'password' => request('password'),
+        ]);
+    }
+
+    public function generateToken()
+    {
+        $newToken = auth()->user()->createToken('api');
+
+		$token = $newToken->token;
+		$token->expires_at = \Carbon\Carbon::now()->addHours(6);
+		$token->save();
+
+		return $newToken;
+    }
 }
