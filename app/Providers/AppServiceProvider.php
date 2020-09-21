@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-        if (isset($_SERVER['REQUEST_SCHEME']) && $_SERVER['REQUEST_SCHEME'] == 'HTTPS') {
+        if($this->app->environment('production')) {
             URL::forceScheme('https');
         }
 
