@@ -15,10 +15,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @include('pages.users.table')
+                    {{ $dataTable->table() }}
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    {{ $dataTable->scripts() }}
+@endpush

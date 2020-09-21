@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -15,10 +16,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @include('pages.doctors.table')
+                    {{ $dataTable->table() }}
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    {{ $dataTable->scripts() }}
+@endpush

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\UpdatePatientRequest;
 use App\Http\Requests\Dashboard\StorePatientRequest;
 use App\Services\PatientService;
+use App\DataTables\PatientsDataTable;
 
 class PatientController extends Controller
 {
@@ -21,11 +22,9 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(PatientsDataTable $dataTable)
     {
-        $patients = $this->patientService->list();
-
-        return view('pages.patients.index')->with(compact('patients'));
+        return $dataTable->render('pages.patients.index');
     }
 
     /**

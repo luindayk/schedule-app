@@ -20,7 +20,7 @@ class CreateSchedulesTable extends Migration
             $table->foreign('patient_id')
                 ->references('id')
                 ->on('patients')
-                ->onDelete('set null')
+                ->onDelete('cascade')
                 ->onUpdate('set null');
             $table->foreign('doctor_id')
                 ->references('id')

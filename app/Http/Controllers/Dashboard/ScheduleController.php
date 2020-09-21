@@ -8,6 +8,7 @@ use App\Http\Requests\Dashboard\StoreScheduleRequest;
 use App\Services\ScheduleService;
 use App\Services\DoctorService;
 use App\Services\PatientService;
+use App\DataTables\SchedulesDataTable;
 
 class ScheduleController extends Controller
 {
@@ -29,11 +30,9 @@ class ScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(SchedulesDataTable $dataTable)
     {
-        $schedules = $this->scheduleService->list();
-
-        return view('pages.schedules.index')->with(compact('schedules'));
+        return $dataTable->render('pages.schedules.index');
     }
 
     /**

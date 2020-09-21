@@ -27,7 +27,7 @@ class UpdateDoctorRequest extends FormRequest
             'fullname'  => ['required', 'string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:doctors,email,'.request('id')],
             'specialty' => ['required', 'string'],
-            'cellphone' => ['required'],
+            'cellphone' => ['required', 'celular_com_ddd'],
             'crm'       => ['required'],
         ];
     }

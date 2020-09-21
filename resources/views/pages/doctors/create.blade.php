@@ -25,3 +25,5 @@
     </div>
 </div>
 @endsection
+
+@include('pages.doctors.scripts')

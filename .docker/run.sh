@@ -7,7 +7,7 @@ if [ ! -f "$FILE" ]; then
     echo ".env created. Configure database connection and run again..."
 fi
 
-docker-compose up -d
+docker-compose up -d --build
 sleep 5
 docker-compose exec php-fpm composer install
 docker-compose exec php-fpm php artisan key:generate

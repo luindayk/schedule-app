@@ -23,4 +23,3 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth']], function () {
     Route::resource('patients', 'Dashboard\PatientController')->except(['show']);
     Route::resource('schedules', 'Dashboard\ScheduleController')->except(['show']);
 });
-

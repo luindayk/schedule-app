@@ -15,10 +15,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @include('pages.schedules.table')
+                    {{ $dataTable->table() }}
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    {{ $dataTable->scripts() }}
+@endpush

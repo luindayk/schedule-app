@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\UpdateUserRequest;
 use App\Http\Requests\Dashboard\StoreUserRequest;
 use App\Services\UserService;
+use App\DataTables\UsersDataTable;
 
 class UserController extends Controller
 {
@@ -21,11 +22,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UsersDataTable $dataTable)
     {
-        $users = $this->userService->list();
-
-        return view('pages.users.index')->with(compact('users'));
+        return $dataTable->render('pages.users.index');
     }
 
     /**
